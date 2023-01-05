@@ -1,16 +1,16 @@
-import { Router } from "express";
-import { NoteController } from "../controllers/note.controller";
+import { Request, Response, Router } from 'express';
+import { noteController } from '../controllers/note.controller';
 
-export const note_route = Router();
+const notesRoutes = Router({
+    mergeParams: true
+});
 
-const noteController = new NoteController();
+const notesController = new noteController();
 
-note_route.get('/:id_user', noteController.list);
+notesRoutes.get('/:userId', notesController.listTask);
 
-note_route.get('/:id_user/:id', noteController.find);
+notesRoutes.post('/:userId', notesController.createTask);
 
-note_route.post('/:id_user/criar', noteController.save)
+notesRoutes.delete('/:userId/:taskId', (req: Request, res: Response) => notesController.deleteTask(req, res));
 
-note_route.put('/:id_user/:id', noteController.update);
-
-note_route.delete('/:id_user/:id', noteController.delete);
+export { notesRoutes };
