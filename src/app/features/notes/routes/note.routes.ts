@@ -7,10 +7,10 @@ const notesRoutes = Router({
 
 const notesController = new noteController();
 
-notesRoutes.get('/:userId', notesController.listTask);
+notesRoutes.get('/:userId', notesController.listNotes);
 
-notesRoutes.post('/:userId', notesController.createTask);
+notesRoutes.post('/:userId', notesController.createNote);
 
-notesRoutes.delete('/:userId/:taskId', (req: Request, res: Response) => notesController.deleteTask(req, res));
+notesRoutes.delete('/:userId/:noteId', (req: Request, res: Response) => notesController.deleteNote(req, res));
 
 export { notesRoutes };

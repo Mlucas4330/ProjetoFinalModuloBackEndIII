@@ -4,6 +4,6 @@ export const runServer = () => {
     const app = createServer();
 
     app.listen(process.env.PORT, () => {
-        console.log('Rodando...');
+        console.log('Servidor online...');
     });
 };

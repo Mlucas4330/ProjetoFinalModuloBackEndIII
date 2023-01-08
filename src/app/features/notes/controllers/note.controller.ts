@@ -1,11 +1,14 @@
 import { Request, Response } from 'express';
 import { CacheRepository } from '../../../shared/repositories/cache.repository';
 import { serverError, success } from '../../../shared/util/response.helper';
+import { NoteRepository } from '../repositories/note.repository';
+import { CreateNoteUseCase } from '../usecases/create.note';
+import { ListNoteUseCase } from '../usecases/list.note';
 
 export class noteController {
     public async listNotes(req: Request, res: Response) {
         try {
-            const usecase = new ListNotesUseCase(new NoteRepository(), new CacheRepository());
+            const usecase = new ListNoteUseCase(new NoteRepository(), new CacheRepository());
 
             const result = await usecase.execute();
 
